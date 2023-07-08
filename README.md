@@ -4,8 +4,8 @@ HMW make it easy for finders to get a house
 
 ### Tech Architecture
 
-User: Flutter
-Server: Mongo, Supabase
+FE: Flutter
+BE: typescript, Supabase(DB)
 
 ### Design Architecture
 
