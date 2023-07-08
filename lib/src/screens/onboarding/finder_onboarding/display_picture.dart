@@ -3,20 +3,21 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:letsublet/src/screens/onboarding/name.dart';
+import 'package:letsublet/src/screens/onboarding/finder_onboarding/profile_work_rent.dart';
 
-import '../../../utils/size_utils.dart';
-import '../../../widgets/custom_button.dart';
-import '../../../widgets/custom_floating_text.dart';
+import '../../../../utils/size_utils.dart';
+import '../../../../widgets/custom_button.dart';
+import '../../../../widgets/custom_floating_text.dart';
+import 'finder_profile_preview.dart';
 
-class OTP extends StatefulWidget {
-  const OTP({super.key});
+class DisplayPicture extends StatefulWidget {
+  const DisplayPicture({super.key});
 
   @override
-  State<OTP> createState() => _OTPState();
+  State<DisplayPicture> createState() => _DisplayPictureState();
 }
 
-class _OTPState extends State<OTP> {
+class _DisplayPictureState extends State<DisplayPicture> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,24 +34,27 @@ class _OTPState extends State<OTP> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      CustomFloatingEditText(
-                        focusNode: FocusNode(),
-                        labelText: "Enter OTP",
-                        margin: getMargin(
-                          left: 23,
-                          right: 24,
-                        ),
-                        textInputAction: TextInputAction.done,
-                        alignment: Alignment.center,
+                      const Center(
+                        child: Text(
+                            textAlign: TextAlign.center,
+                            "Upload your images (optional)"),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Center(child: Icon(Icons.image_search)),
+                      const SizedBox(
+                        height: 32,
                       ),
                       Padding(
                         padding: EdgeInsets.only(
                           left: 24,
-                          top: 427,
+                          top: 300,
                           right: 48,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CustomButton(
                                 height: getVerticalSize(
@@ -66,9 +70,6 @@ class _OTPState extends State<OTP> {
                                   Navigator.of(context).pop();
                                   log("pressed Back");
                                 }),
-                            SizedBox(
-                              width: 100,
-                            ),
                             CustomButton(
                               height: getVerticalSize(
                                 37,
@@ -77,10 +78,13 @@ class _OTPState extends State<OTP> {
                                 87,
                               ),
                               text: "Next",
+                              margin: getMargin(
+                                right: 10,
+                              ),
                               shape: ButtonShape.Square,
                               onTap: () => Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => Name(),
+                                  builder: (context) => ProfilePreview(),
                                 ),
                               ),
                             ),

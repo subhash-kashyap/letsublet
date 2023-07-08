@@ -3,20 +3,20 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:letsublet/src/screens/onboarding/name.dart';
+import 'package:letsublet/src/screens/onboarding/finder_onboarding/profile_work_rent.dart';
 
-import '../../../utils/size_utils.dart';
-import '../../../widgets/custom_button.dart';
-import '../../../widgets/custom_floating_text.dart';
+import '../../../../utils/size_utils.dart';
+import '../../../../widgets/custom_button.dart';
+import '../../../../widgets/custom_floating_text.dart';
 
-class OTP extends StatefulWidget {
-  const OTP({super.key});
+class LocationF extends StatefulWidget {
+  const LocationF({super.key});
 
   @override
-  State<OTP> createState() => _OTPState();
+  State<LocationF> createState() => _LocationFState();
 }
 
-class _OTPState extends State<OTP> {
+class _LocationFState extends State<LocationF> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,24 +33,39 @@ class _OTPState extends State<OTP> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      const Center(
+                        child: Text(
+                            textAlign: TextAlign.center,
+                            "Enter preferred area\n\nor\n\nyour college name"),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       CustomFloatingEditText(
                         focusNode: FocusNode(),
-                        labelText: "Enter OTP",
+                        hintText: "Ex: Boston or North East...",
                         margin: getMargin(
-                          left: 23,
+                          left: 24,
                           right: 24,
                         ),
                         textInputAction: TextInputAction.done,
                         alignment: Alignment.center,
                       ),
+                      SizedBox(
+                        height: 32,
+                      ),
+                      Container(
+                        child: Center(child: Text("Map coming")),
+                      ),
                       Padding(
                         padding: EdgeInsets.only(
                           left: 24,
-                          top: 427,
+                          top: 300,
                           right: 48,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CustomButton(
                                 height: getVerticalSize(
@@ -66,9 +81,6 @@ class _OTPState extends State<OTP> {
                                   Navigator.of(context).pop();
                                   log("pressed Back");
                                 }),
-                            SizedBox(
-                              width: 100,
-                            ),
                             CustomButton(
                               height: getVerticalSize(
                                 37,
@@ -77,10 +89,13 @@ class _OTPState extends State<OTP> {
                                 87,
                               ),
                               text: "Next",
+                              margin: getMargin(
+                                right: 10,
+                              ),
                               shape: ButtonShape.Square,
                               onTap: () => Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => Name(),
+                                  builder: (context) => WorkRent(),
                                 ),
                               ),
                             ),

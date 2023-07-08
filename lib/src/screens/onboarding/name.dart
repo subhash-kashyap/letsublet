@@ -3,20 +3,20 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:letsublet/src/screens/onboarding/name.dart';
+import 'package:letsublet/src/screens/onboarding/sub_find.dart';
 
 import '../../../utils/size_utils.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/custom_floating_text.dart';
 
-class OTP extends StatefulWidget {
-  const OTP({super.key});
+class Name extends StatefulWidget {
+  const Name({super.key});
 
   @override
-  State<OTP> createState() => _OTPState();
+  State<Name> createState() => _NameState();
 }
 
-class _OTPState extends State<OTP> {
+class _NameState extends State<Name> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,22 +35,50 @@ class _OTPState extends State<OTP> {
                     children: [
                       CustomFloatingEditText(
                         focusNode: FocusNode(),
-                        labelText: "Enter OTP",
+                        labelText: "Enter Your Name",
                         margin: getMargin(
-                          left: 23,
+                          left: 24,
                           right: 24,
                         ),
                         textInputAction: TextInputAction.done,
                         alignment: Alignment.center,
                       ),
+                      SizedBox(
+                        height: 80,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomFloatingEditText(
+                            margin: getMargin(
+                              left: 24,
+                            ),
+                            width: 120,
+                            focusNode: FocusNode(),
+                            labelText: "Enter Age",
+                            textInputAction: TextInputAction.done,
+                            alignment: Alignment.center,
+                          ),
+                          CustomFloatingEditText(
+                            margin: getMargin(
+                              right: 24,
+                            ),
+                            width: 120,
+                            focusNode: FocusNode(),
+                            labelText: "Your Gender",
+                            textInputAction: TextInputAction.done,
+                            alignment: Alignment.center,
+                          ),
+                        ],
+                      ),
                       Padding(
                         padding: EdgeInsets.only(
                           left: 24,
-                          top: 427,
+                          top: 312,
                           right: 48,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CustomButton(
                                 height: getVerticalSize(
@@ -80,7 +108,7 @@ class _OTPState extends State<OTP> {
                               shape: ButtonShape.Square,
                               onTap: () => Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => Name(),
+                                  builder: (context) => SubFind(),
                                 ),
                               ),
                             ),
