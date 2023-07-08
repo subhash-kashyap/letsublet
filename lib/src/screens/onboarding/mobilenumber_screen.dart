@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+import '../../../utils/size_utils.dart';
+import '../../../widgets/custom_button.dart';
+import '../../../widgets/custom_floating_text.dart';
 import 'otp_screen.dart';
 
 class Initial extends StatefulWidget {
@@ -30,24 +33,15 @@ class _InitialState extends State<Initial> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
-                        margin: const EdgeInsets.only(
+                      CustomFloatingEditText(
+                        focusNode: FocusNode(),
+                        labelText: "Enter Mobile Number",
+                        margin: getMargin(
                           left: 23,
                           right: 24,
                         ),
+                        textInputAction: TextInputAction.done,
                         alignment: Alignment.center,
-                        child: TextFormField(
-                          focusNode: FocusNode(),
-                          // controller: controller.otptextController,
-                          textInputAction: TextInputAction.done,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(2.0))),
-                            labelText: "Enter Mobile Number",
-                          ),
-                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(
@@ -59,12 +53,23 @@ class _InitialState extends State<Initial> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => OTP()));
-                              },
-                              child: Text("Next"),
+                            CustomButton(
+                              height: getVerticalSize(
+                                37,
+                              ),
+                              width: getHorizontalSize(
+                                87,
+                              ),
+                              text: "Next",
+                              margin: getMargin(
+                                right: 10,
+                              ),
+                              shape: ButtonShape.Square,
+                              onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => OTP(),
+                                ),
+                              ),
                             ),
                           ],
                         ),

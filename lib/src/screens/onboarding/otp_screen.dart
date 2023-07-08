@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+import '../../../utils/size_utils.dart';
+import '../../../widgets/custom_button.dart';
+import '../../../widgets/custom_floating_text.dart';
+
 class OTP extends StatefulWidget {
   const OTP({super.key});
 
@@ -28,25 +32,15 @@ class _OTPState extends State<OTP> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
-                        margin: const EdgeInsets.only(
+                      CustomFloatingEditText(
+                        focusNode: FocusNode(),
+                        labelText: "Enter OTP",
+                        margin: getMargin(
                           left: 23,
                           right: 24,
                         ),
+                        textInputAction: TextInputAction.done,
                         alignment: Alignment.center,
-                        child: TextFormField(
-                          focusNode: FocusNode(),
-                          autofocus: false,
-                          // controller: controller.otptextController,
-                          textInputAction: TextInputAction.done,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(2.0))),
-                            labelText: "Enter OTP",
-                          ),
-                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(
@@ -57,21 +51,33 @@ class _OTPState extends State<OTP> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            TextButton(
-                              style: ButtonStyle(),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-
-                                log("Pressed Back");
-                              },
-                              child: Text("<"),
+                            CustomButton(
+                                height: getVerticalSize(
+                                  37,
+                                ),
+                                width: getHorizontalSize(
+                                  10,
+                                ),
+                                variant: ButtonVariant.OutlineBlack900_1,
+                                text: "<",
+                                shape: ButtonShape.Square,
+                                onTap: () {
+                                  Navigator.of(context).pop();
+                                  log("pressed Back");
+                                }),
+                            SizedBox(
+                              width: 100,
                             ),
-                            TextButton(
-                              onPressed: () {
-                                log("Pressed Next");
-                              },
-                              child: Text("Next"),
-                            ),
+                            CustomButton(
+                                height: getVerticalSize(
+                                  37,
+                                ),
+                                width: getHorizontalSize(
+                                  87,
+                                ),
+                                text: "Next",
+                                shape: ButtonShape.Square,
+                                onTap: () => {log("pressed Next")}),
                           ],
                         ),
                       ),
