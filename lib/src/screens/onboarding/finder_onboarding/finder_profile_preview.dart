@@ -8,6 +8,7 @@ import 'package:letsublet/src/screens/onboarding/finder_onboarding/profile_work_
 import '../../../../utils/size_utils.dart';
 import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_floating_text.dart';
+import '../../finder/homescreen.dart';
 
 class ProfilePreview extends StatefulWidget {
   const ProfilePreview({super.key});
@@ -151,11 +152,11 @@ class _ProfilePreviewState extends State<ProfilePreview> {
                                 right: 10,
                               ),
                               shape: ButtonShape.Square,
-                              // onTap: () => Navigator.of(context).push(
-                              //   MaterialPageRoute(
-                              //     builder: (context) => FinderHome(),
-                              //   ),
-                              // ),
+                              onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => FinderHome(),
+                                ),
+                              ),
                             ),
                           ],
                         ),
